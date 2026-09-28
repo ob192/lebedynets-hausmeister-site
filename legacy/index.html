@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hausmeisterservice Chemnitz | Lebedynets Hausmeisterdienst</title>
+<meta name="description" content="Zuverlässige Objektpflege und Hausmeisterservice in Chemnitz: Treppenhausreinigung, Garten- und Grünpflege, Winterdienst, Entrümpelung. Kostenlose Objektbesichtigung.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root {
+    --green: #1f4d3a;
+    --green-dark: #163829;
+    --green-soft: #e8f0ec;
+    --accent: #f2b441;
+    --accent-dark: #d99a22;
+    --ink: #1c2421;
+    --muted: #5b6862;
+    --line: #dde5e1;
+    --bg: #ffffff;
+    --bg-alt: #f6f8f7;
+    --radius: 14px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 .5em; }
+  h2 { font-size: clamp(1.6rem, 3.2vw, 2.2rem); }
+  .eyebrow {
+    display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--green); margin-bottom: .6em;
+  }
+  .lead { color: var(--muted); max-width: 640px; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex; align-items: center; gap: .5em; justify-content: center;
+    padding: .85em 1.4em; border-radius: 999px; font-weight: 700; text-decoration: none;
+    border: 2px solid transparent; cursor: pointer; font-size: 1rem; font-family: inherit;
+    transition: background .15s, transform .15s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: var(--ink); }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-ghost { border-color: rgba(255,255,255,.55); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.1); }
+  .btn svg { width: 1.1em; height: 1.1em; flex: none; }
+
+  /* Header */
+  header.top {
+    position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96);
+    backdrop-filter: blur(6px); border-bottom: 1px solid var(--line);
+  }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; line-height: 1.1; }
+  .logo-mark { width: 38px; height: 38px; border-radius: 9px; background: var(--green); display: grid; place-items: center; flex: none; }
+  .logo small { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; }
+  nav.links { display: flex; gap: 22px; font-weight: 600; font-size: .95rem; }
+  nav.links a { text-decoration: none; color: var(--muted); }
+  nav.links a:hover { color: var(--green); }
+  .top .btn { padding: .6em 1.1em; font-size: .95rem; }
+
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; isolation: isolate;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(242,180,65,.18), transparent 45%),
+      linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    color: #fff; padding: 84px 0 96px;
+  }
+  .hero-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: -2;
+  }
+  /* Dark green veil so the white text stays readable over any footage */
+  .hero::after {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(90deg, rgba(22,56,41,.9) 0%, rgba(22,56,41,.68) 55%, rgba(22,56,41,.4) 100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); }
+  .hero p { color: rgba(255,255,255,.85); font-size: 1.1rem; max-width: 560px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .hero-card {
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+    border-radius: var(--radius); padding: 28px;
+  }
+  .stat { font-size: 3.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .stat-label { margin: .4em 0 1.2em; color: rgba(255,255,255,.9); }
+  .checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .checks li { display: flex; gap: 10px; align-items: flex-start; }
+  .checks svg { width: 20px; height: 20px; flex: none; margin-top: 3px; color: var(--accent); }
+
+  section { padding: 84px 0; }
+  section.alt { background: var(--bg-alt); }
+
+  /* Services */
+  .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; }
+  .card {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 28px; display: flex; gap: 18px;
+  }
+  .icon {
+    width: 52px; height: 52px; border-radius: 12px; background: var(--green-soft);
+    color: var(--green); display: grid; place-items: center; flex: none;
+  }
+  .icon svg { width: 26px; height: 26px; }
+  #leistungen { background: linear-gradient(180deg, var(--green-soft) 0%, #f3f7f5 100%); }
+  #leistungen .card {
+    border: 2px solid rgba(31,77,58,.18); border-top: 5px solid var(--green);
+    box-shadow: 0 6px 18px rgba(22,56,41,.06);
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+  }
+  #leistungen .card:hover {
+    border-color: var(--green); border-top-color: var(--accent);
+    box-shadow: 0 12px 28px rgba(22,56,41,.14); transform: translateY(-3px);
+  }
+  #leistungen .icon { background: var(--green); color: var(--accent); }
+  .service-link { color: inherit; text-decoration: none; cursor: pointer; }
+  .card-cta { display: inline-block; margin-top: 12px; font-weight: 700; color: var(--green); }
+  .service-link:hover .card-cta { color: var(--accent-dark); }
+  section[id] { scroll-margin-top: 68px; }
+  @keyframes form-flash { 0% { box-shadow: 0 0 0 4px var(--accent); } 100% { box-shadow: 0 0 0 0 rgba(242,180,65,0); } }
+  form.request.flash { animation: form-flash 1.6s ease-out; }
+  .card h3 { font-size: 1.2rem; margin-bottom: .35em; }
+  .card p { margin: 0; color: var(--muted); }
+
+  /* Why */
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+  .why { border-top: 3px solid var(--accent); padding-top: 18px; }
+  .why h3 { font-size: 1.1rem; }
+  .why p { color: var(--muted); margin: 0; }
+  .goal {
+    margin-top: 48px; padding: 28px 32px; border-radius: var(--radius);
+    background: var(--green-soft); color: var(--green-dark); font-size: 1.15rem; font-weight: 600;
+  }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; counter-reset: step; }
+  .step { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+    background: var(--green); color: #fff; font-weight: 800; margin-bottom: 14px;
+  }
+  #ablauf { background: linear-gradient(180deg, var(--green-soft) 0%, #f3f7f5 100%); }
+  #ablauf .step {
+    border: 2px solid rgba(31,77,58,.18); border-top: 5px solid var(--green);
+    box-shadow: 0 6px 18px rgba(22,56,41,.06);
+  }
+  #ablauf .step::before { color: var(--accent); }
+  .step h3 { font-size: 1.15rem; }
+  .step p { margin: 0; color: var(--muted); }
+
+  /* Contact */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 36px; align-items: start; }
+  .contact-info { display: grid; gap: 18px; }
+  .info-row { display: flex; gap: 14px; align-items: flex-start; }
+  .info-row .icon { width: 44px; height: 44px; }
+  .info-row .icon svg { width: 22px; height: 22px; }
+  .info-row strong { display: block; }
+  .info-row a { color: var(--green); font-weight: 700; text-decoration: none; }
+  form.request {
+    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px;
+    display: grid; gap: 14px;
+  }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  label { font-weight: 600; font-size: .92rem; display: grid; gap: 6px; }
+  input, select, textarea {
+    font: inherit; font-size: 1rem; padding: .7em .85em; border: 1px solid var(--line);
+    border-radius: 10px; background: #fff; color: var(--ink); width: 100%;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--green); outline-offset: 1px; border-color: var(--green); }
+  textarea { min-height: 110px; resize: vertical; }
+  .form-note { font-size: .85rem; color: var(--muted); margin: 0; }
+  form .btn { width: 100%; }
+  .send-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .btn-whatsapp { background: #25d366; color: #0b3d1f; }
+  .btn-whatsapp:hover { background: #1fb957; }
+  .btn[disabled] { opacity: .6; cursor: wait; }
+  .form-status { margin: 0; padding: 12px 14px; border-radius: 10px; font-weight: 600; }
+  .form-status.ok { background: var(--green-soft); color: var(--green-dark); }
+  .form-status.err { background: #fdecea; color: #8a1c12; }
+  @media (max-width: 480px) { .send-buttons { grid-template-columns: 1fr; } }
+
+  /* Footer */
+  footer { background: var(--green-dark); color: rgba(255,255,255,.8); padding: 48px 0 32px; font-size: .95rem; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: #fff; margin: 0 0 .6em; font-size: 1rem; }
+  footer a { color: #fff; }
+  .legal { margin-top: 36px; border-top: 1px solid rgba(255,255,255,.15); padding-top: 20px; }
+  details { margin-bottom: 10px; }
+  summary { cursor: pointer; color: #fff; font-weight: 600; }
+  details div { padding: 12px 0 4px; max-width: 760px; }
+  details h5 { color: #fff; margin: 1em 0 .3em; font-size: .95rem; }
+  .copy { margin-top: 20px; font-size: .85rem; color: rgba(255,255,255,.55); }
+
+  /* Mobile call bar */
+  .callbar { display: none; }
+
+  @media (max-width: 900px) {
+    nav.links { display: none; }
+    .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .foot-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    body { font-size: 16px; padding-bottom: 72px; }
+    .wrap { padding: 0 16px; }
+    .top .btn span { display: none; }
+    .hero { padding: 56px 0 64px; }
+    section { padding: 60px 0; }
+    .grid-4, .steps, .why-grid, .row-2 { grid-template-columns: 1fr; }
+    .card { padding: 22px; }
+    .callbar {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: #fff;
+      border-top: 1px solid var(--line); z-index: 30;
+    }
+    .callbar .btn { padding: .75em 1em; }
+    .callbar .btn-outline { border-color: var(--green); color: var(--green); }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Lebedynets Hausmeisterdienst – Startseite">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="38" height="38" viewBox="0 0 56 56"><rect width="56" height="56" rx="12" fill="#1f4d3a"/><path d="M10 26 28 11l18 15" fill="none" stroke="#f2b441" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 23v20h14" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>Lebedynets<small>Hausmeisterdienst Chemnitz</small></span>
+    </a>
+    <nav class="links" aria-label="Hauptnavigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#vorteile">Vorteile</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-primary" href="tel:+4915203587320">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      <span>0152 03587320</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/hero-poster.jpg" aria-hidden="true">
+      <source src="media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow" style="color:var(--accent)">Hausmeisterservice in Chemnitz</span>
+        <h1>Zuverlässige Objektpflege für Ihre Immobilien</h1>
+        <p>Ihr regionaler Partner für Sauberkeit, Werterhalt und reibungslose Abläufe – maßgeschneidert für Hausverwaltungen und Eigentümer.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#kontakt">Kostenlose Objektbesichtigung</a>
+          <a class="btn btn-ghost" href="#leistungen">Leistungen ansehen</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="stat">45</div>
+        <div class="stat-label">Mehrfamilienhäuser in Chemnitz betreuen wir bereits heute.</div>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fester Ansprechpartner</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Kalkulierbare Kosten ohne böse Überraschungen</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Individuelles Angebot für Ihr Portfolio</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen">
+    <div class="wrap">
+      <span class="eyebrow">Unsere Leistungen</span>
+      <h2>Leistungsspektrum für Ihre Liegenschaften</h2>
+      <p class="lead">Vom Treppenhaus bis zum Dachboden, vom Rasen bis zum Gehweg im Winter – alles aus einer Hand.</p>
+
+      <div class="grid-4">
+        <a class="card service-link" href="#kontakt" data-service="Gebäude- &amp; Treppenhausreinigung">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4v-4h4v-4h4V8h4"/><path d="M4 20V4"/></svg>
+          </div>
+          <div>
+            <h3>Gebäude- &amp; Treppenhausreinigung</h3>
+            <p>Gründliche Reinigung von Treppen, Podesten, Geländern, Eingangsbereichen und Haustüren sowie professionelle Fenster- und Glasreinigung, Keller und Dachböden.</p>
+            <span class="card-cta">Angebot anfragen →</span>
+          </div>
+        </a>
+        <a class="card service-link" href="#kontakt" data-service="Außen- &amp; Gartenpflege">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11"/><path d="M12 11c0-4 3-7 7-7 0 4-3 7-7 7z"/><path d="M12 14c0-3-2.5-5.5-6-5.5 0 3.5 2.5 5.5 6 5.5z"/><path d="M5 22h14"/></svg>
+          </div>
+          <div>
+            <h3>Außen- &amp; Gartenpflege</h3>
+            <p>Zuverlässiger Rasenschnitt, fachgerechter Hecken- und Strauchschnitt sowie ganzheitliche Grünanlagenpflege und Pflege der Fußwege.</p>
+            <span class="card-cta">Angebot anfragen →</span>
+          </div>
+        </a>
+        <a class="card service-link" href="#kontakt" data-service="Winterdienst">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1 19.1 4.9"/><path d="m9 3 3 3 3-3M9 21l3-3 3 3M3 9l3 3-3 3M21 9l-3 3 3 3"/></svg>
+          </div>
+          <div>
+            <h3>Winterdienst</h3>
+            <p>Pünktliche Schneeräumung und gewissenhafter Streudienst bei Glätte – gemäß den gesetzlichen Vorgaben.</p>
+            <span class="card-cta">Angebot anfragen →</span>
+          </div>
+        </a>
+        <a class="card service-link" href="#kontakt" data-service="">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 4 6 6-9 9H5v-6z"/><path d="m11 7 6 6"/><path d="M3 21h18"/></svg>
+          </div>
+          <div>
+            <h3>Spezialleistungen</h3>
+            <p>Keller- und Dachbodenreinigung, Entrümpelungen inklusive fachgerechter Entsorgung, malermäßiges Überarbeiten von Einheiten sowie Komplettreinigung von Wohnungen vor der Vermietung.</p>
+            <span class="card-cta">Angebot anfragen →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="vorteile" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Ihre Vorteile</span>
+      <h2>Warum Hausverwaltungen uns vertrauen</h2>
+
+      <div class="why-grid">
+        <div class="why">
+          <h3>Erfahrung &amp; Praxis</h3>
+          <p>Im Einsatz für unsere Kunden – wir wissen, worauf es ankommt.</p>
+        </div>
+        <div class="why">
+          <h3>Fester Ansprechpartner</h3>
+          <p>Kurze Kommunikationswege und schnelle Reaktionszeiten.</p>
+        </div>
+        <div class="why">
+          <h3>Faire &amp; transparente Preise</h3>
+          <p>Kalkulierbare Kosten ohne böse Überraschungen.</p>
+        </div>
+        <div class="why">
+          <h3>Qualität &amp; Pünktlichkeit</h3>
+          <p>Flexibel, termingerecht und mit hohem Qualitätsanspruch.</p>
+        </div>
+      </div>
+
+      <p class="goal">Unser Ziel: Bewohner und Eigentümer fühlen sich in einem rundum gepflegten Umfeld wohl – und Sie als Hausverwaltung werden spürbar entlastet.</p>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="wrap">
+      <span class="eyebrow">So einfach geht's</span>
+      <h2>In drei Schritten zur Zusammenarbeit</h2>
+
+      <div class="steps">
+        <div class="step">
+          <h3>Anfrage</h3>
+          <p>Rufen Sie uns an oder schreiben Sie uns kurz, um welches Objekt es geht.</p>
+        </div>
+        <div class="step">
+          <h3>Objektbesichtigung</h3>
+          <p>Wir kommen vor Ort – kostenlos und unverbindlich – und sehen uns Ihre Liegenschaft an.</p>
+        </div>
+        <div class="step">
+          <h3>Individuelles Angebot</h3>
+          <p>Sie erhalten ein auf Ihr Portfolio abgestimmtes Angebot mit klaren, kalkulierbaren Kosten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Kostenlose Objektbesichtigung vereinbaren</h2>
+      <p class="lead">Überzeugen Sie sich vor Ort von unserer Leistungsfähigkeit. Wir freuen uns auf eine erfolgreiche Zusammenarbeit mit Ihnen!</p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-row">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+            <div><strong>Telefon</strong><a href="tel:+4915203587320">0152 03587320</a></div>
+          </div>
+          <div class="info-row">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+            <div><strong>WhatsApp</strong><a href="https://wa.me/4915203587320" target="_blank" rel="noopener">Nachricht schreiben</a></div>
+          </div>
+          <div class="info-row">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+            <div><strong>E-Mail</strong><a href="mailto:lebedinets.antonio@gmail.com">lebedinets.antonio@gmail.com</a></div>
+          </div>
+          <div class="info-row">
+            <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div><strong>Adresse</strong>Zeißstr. 22<br>09131 Chemnitz</div>
+          </div>
+        </div>
+
+        <form class="request" id="request-form">
+          <div class="row-2">
+            <label>Name *<input name="name" required autocomplete="name"></label>
+            <label>Telefon<input name="phone" type="tel" autocomplete="tel"></label>
+          </div>
+          <label>E-Mail<input name="email" type="email" autocomplete="email"></label>
+          <label>Gewünschte Leistung
+            <select name="service">
+              <option>Gebäude- &amp; Treppenhausreinigung</option>
+              <option>Außen- &amp; Gartenpflege</option>
+              <option>Winterdienst</option>
+              <option>Entrümpelung</option>
+              <option>Wohnungsreinigung vor Vermietung</option>
+              <option>Malerarbeiten</option>
+              <option>Mehrere Leistungen / Komplettbetreuung</option>
+              <option>Sonstiges</option>
+            </select>
+          </label>
+          <label>Objekt-Adresse (optional)<input name="address" autocomplete="street-address"></label>
+          <label>Ihre Nachricht *<textarea name="message" required placeholder="z. B. Anzahl der Häuser / Wohneinheiten, gewünschter Starttermin"></textarea></label>
+          <!-- Honeypot: hidden from people, bots fill it in -->
+          <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+          <p class="form-status" id="form-status" role="status" hidden></p>
+          <div class="send-buttons">
+            <button class="btn btn-primary" type="submit" value="email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              Per E-Mail senden
+            </button>
+            <button class="btn btn-whatsapp" type="submit" value="whatsapp">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+              Per WhatsApp senden
+            </button>
+          </div>
+          <p class="form-note">Bitte geben Sie Telefon oder E-Mail an, damit wir Sie erreichen können. Bei „WhatsApp“ öffnet sich die App mit Ihrer vorausgefüllten Anfrage. Lieber telefonisch? <a href="tel:+4915203587320">0152 03587320</a>. Hinweise zum Datenschutz finden Sie unten.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Lebedynets Hausmeisterdienst</h4>
+        <p>Zuverlässige Objektpflege &amp; Hausmeisterservice in Chemnitz.</p>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <p>Zeißstr. 22<br>09131 Chemnitz<br><a href="tel:+4915203587320">0152 03587320</a><br><a href="mailto:lebedinets.antonio@gmail.com">lebedinets.antonio@gmail.com</a></p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <p>Treppenhausreinigung<br>Garten- &amp; Grünpflege<br>Winterdienst<br>Entrümpelung</p>
+      </div>
+    </div>
+
+    <div class="legal">
+      <details id="impressum">
+        <summary>Impressum</summary>
+        <div>
+          <h5>Angaben gemäß § 5 DDG</h5>
+          <p>Anton Lebedynets<br>Lebedynets Hausmeisterdienst<br>Zeißstr. 22<br>09131 Chemnitz</p>
+          <h5>Kontakt</h5>
+          <p>Telefon: 0152 03587320<br>E-Mail: <a href="mailto:lebedinets.antonio@gmail.com">lebedinets.antonio@gmail.com</a></p>
+        </div>
+      </details>
+      <details id="datenschutz">
+        <summary>Datenschutzerklärung</summary>
+        <div>
+          <h5>Verantwortlicher</h5>
+          <p>Anton Lebedynets, Zeißstr. 22, 09131 Chemnitz, Telefon 0152 03587320, E-Mail lebedinets.antonio@gmail.com.</p>
+          <h5>Hosting und Server-Logfiles</h5>
+          <p>Beim Aufruf dieser Website verarbeitet unser Hosting-Anbieter technisch notwendige Daten (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browsertyp) in Server-Logfiles. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (sicherer und stabiler Betrieb der Website).</p>
+          <h5>Keine Cookies, kein Tracking</h5>
+          <p>Diese Website setzt keine Cookies, verwendet keine Analyse- oder Tracking-Werkzeuge und lädt keine externen Schriftarten oder Inhalte.</p>
+          <h5>Anfrageformular, Telefon und WhatsApp</h5>
+          <p>Wenn Sie uns anrufen, das Anfrageformular nutzen oder uns eine Nachricht senden, verarbeiten wir Ihre Angaben (Name, Kontaktdaten, Objekt und Nachricht) ausschließlich zur Bearbeitung Ihrer Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Bei „Per E-Mail senden“ werden die Formulardaten über unseren Hosting-Anbieter als E-Mail an uns übermittelt und nicht auf der Website gespeichert. Wir löschen Ihre Daten, sobald sie für die Bearbeitung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
+          <p>Bei „Per WhatsApp senden“ öffnet das Formular lediglich WhatsApp mit Ihrem vorausgefüllten Text; dabei werden Daten an die WhatsApp Ireland Ltd. (Meta) übermittelt, es gelten deren Datenschutzbestimmungen. Alternativ erreichen Sie uns jederzeit telefonisch.</p>
+          <h5>Ihre Rechte</h5>
+          <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht, sich bei einer Aufsichtsbehörde zu beschweren (in Sachsen: Sächsische Datenschutz- und Transparenzbeauftragte).</p>
+        </div>
+      </details>
+      <p class="copy">© <span id="year">2026</span> Lebedynets Hausmeisterdienst · Chemnitz</p>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-primary" href="tel:+4915203587320">Anrufen</a>
+  <a class="btn btn-outline" href="#kontakt">Anfrage</a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var WHATSAPP = '4915203587320';
+
+  function showStatus(kind, html) {
+    var s = document.getElementById('form-status');
+    s.className = 'form-status ' + kind;
+    s.innerHTML = html;
+    s.hidden = false;
+  }
+
+  document.getElementById('request-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var via = (e.submitter && e.submitter.value) || 'email';
+    var phone = f.phone.value.trim(), email = f.email.value.trim();
+
+    if (via === 'whatsapp') {
+      var lines = [
+        'Anfrage über die Website',
+        'Name: ' + f.name.value.trim(),
+        phone ? 'Telefon: ' + phone : '',
+        email ? 'E-Mail: ' + email : '',
+        'Leistung: ' + f.service.value,
+        f.address.value.trim() ? 'Objekt: ' + f.address.value.trim() : '',
+        '',
+        f.message.value.trim()
+      ].filter(function (l, i) { return l !== '' || i === 6; });
+      window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+      return;
+    }
+
+    if (!phone && !email) {
+      showStatus('err', 'Bitte geben Sie Telefon oder E-Mail an, damit wir Sie erreichen können.');
+      f.phone.focus();
+      return;
+    }
+
+    var buttons = f.querySelectorAll('button');
+    buttons.forEach(function (b) { b.disabled = true; });
+    fetch('send.php', { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.j && res.j.error);
+        f.reset();
+        showStatus('ok', 'Vielen Dank! Ihre Anfrage ist bei uns eingegangen – wir melden uns in Kürze.');
+      })
+      .catch(function () {
+        showStatus('err', 'Die Anfrage konnte leider nicht gesendet werden. Bitte nutzen Sie WhatsApp oder rufen Sie uns an: <a href="tel:+4915203587320">0152 03587320</a>.');
+      })
+      .finally(function () { buttons.forEach(function (b) { b.disabled = false; }); });
+  });
+
+  // Service card -> jump to the form with that service preselected
+  document.querySelectorAll('.service-link').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var form = document.getElementById('request-form');
+      var wanted = card.getAttribute('data-service');
+      if (wanted) {
+        Array.prototype.forEach.call(form.service.options, function (o) {
+          if (o.text === wanted.replace('&amp;', '&')) form.service.value = o.value;
+        });
+      }
+      form.classList.remove('flash'); void form.offsetWidth; form.classList.add('flash');
+      setTimeout(function () { (wanted ? form.name : form.service).focus({ preventScroll: true }); }, 500);
+    });
+  });
+
+  document.querySelectorAll('a[href="#impressum"], a[href="#datenschutz"]').forEach(function (a) {
+    a.addEventListener('click', function () { document.querySelector(a.getAttribute('href')).open = true; });
+  });
+</script>
+</body>
+</html>
